@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="爬虫原理和数据抓取 url的形式形式   scheme://host[:port#]/path/…/[?query-string][#anchor]scheme：协议(例如：http, https, ftp)host：服务器的IP地址或者域名port：服务器的端口（如果是走协议默认端口，80  or    443）path：访问资源的路径query-string：参数，发送给http服务器的数据a">
+  <meta name="description" content="爬虫原理 url的形式形式   scheme://host[:port#]/path/…/[?query-string][#anchor]scheme：协议(例如：http, https, ftp)host：服务器的IP地址或者域名port：服务器的端口（如果是走协议默认端口，80  or    443）path：访问资源的路径query-string：参数，发送给http服务器的数据anchor">
 <meta property="og:type" content="article">
 <meta property="og:title" content="爬虫原理和数据抓取笔记">
 <meta property="og:url" content="http://alpace.github.io/2019/02/08/Spider/index.html">
 <meta property="og:site_name" content="Alpace&#39;s Blog">
-<meta property="og:description" content="爬虫原理和数据抓取 url的形式形式   scheme://host[:port#]/path/…/[?query-string][#anchor]scheme：协议(例如：http, https, ftp)host：服务器的IP地址或者域名port：服务器的端口（如果是走协议默认端口，80  or    443）path：访问资源的路径query-string：参数，发送给http服务器的数据a">
+<meta property="og:description" content="爬虫原理 url的形式形式   scheme://host[:port#]/path/…/[?query-string][#anchor]scheme：协议(例如：http, https, ftp)host：服务器的IP地址或者域名port：服务器的端口（如果是走协议默认端口，80  or    443）path：访问资源的路径query-string：参数，发送给http服务器的数据anchor">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-08T13:02:45.370Z">
+<meta property="og:updated_time" content="2019-02-16T02:22:46.753Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="爬虫原理和数据抓取笔记">
-<meta name="twitter:description" content="爬虫原理和数据抓取 url的形式形式   scheme://host[:port#]/path/…/[?query-string][#anchor]scheme：协议(例如：http, https, ftp)host：服务器的IP地址或者域名port：服务器的端口（如果是走协议默认端口，80  or    443）path：访问资源的路径query-string：参数，发送给http服务器的数据a">
+<meta name="twitter:description" content="爬虫原理 url的形式形式   scheme://host[:port#]/path/…/[?query-string][#anchor]scheme：协议(例如：http, https, ftp)host：服务器的IP地址或者域名port：服务器的端口（如果是走协议默认端口，80  or    443）path：访问资源的路径query-string：参数，发送给http服务器的数据anchor">
 
 
 
@@ -437,12 +437,24 @@
                 
               
 
-              <time title="创建时间：2019-02-08 13:14:42 / 修改时间：13:02:45" itemprop="dateCreated datePublished" datetime="2019-02-08T13:14:42Z">2019-02-08</time>
+              <time title="创建时间：2019-02-08 13:14:42" itemprop="dateCreated datePublished" datetime="2019-02-08T13:14:42Z">2019-02-08</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-02-16 02:22:46" itemprop="dateModified" datetime="2019-02-16T02:22:46Z">2019-02-16</time>
               
             
           </span>
@@ -493,7 +505,7 @@
       
 
       
-        <h2 id="爬虫原理和数据抓取"><a href="#爬虫原理和数据抓取" class="headerlink" title="爬虫原理和数据抓取"></a>爬虫原理和数据抓取</h2><ul>
+        <h2 id="爬虫原理"><a href="#爬虫原理" class="headerlink" title="爬虫原理"></a>爬虫原理</h2><ul>
 <li><p>url的形式<br>形式   scheme://host[:port#]/path/…/[?query-string][#anchor]<br>scheme：协议(例如：http, https, ftp)<br>host：服务器的IP地址或者域名<br>port：服务器的端口（如果是走协议默认端口，80  or    443）<br>path：访问资源的路径<br>query-string：参数，发送给http服务器的数据<br>anchor：锚（跳转到网页的指定锚点位置）<br><a href="http://localhost:4000/file/part01/1.2.html" target="_blank" rel="noopener">http://localhost:4000/file/part01/1.2.html</a><br><a href="http://item.jd.com/11936238.html#product-detail" target="_blank" rel="noopener">http://item.jd.com/11936238.html#product-detail</a></p>
 </li>
 <li><p>发送简单的请求<br>需求：通过requests向百度首页发送请求，获取百度首页的数据<br>response = requests.get(url)<br>response的常用方法：<br>response.text<br>respones.content<br>response.status_code<br>response.request.headers<br>response.headers</p>
@@ -526,6 +538,10 @@
 <p>2、请求 SSL证书验证<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response = requests.get(<span class="string">"https://www.12306.cn/mormhweb/ "</span>, verify=<span class="keyword">False</span>)</span><br></pre></td></tr></table></figure></p>
 <p>3、设置超时<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response = requests.get(url,<span class="number">3</span>)</span><br></pre></td></tr></table></figure></p>
 <p>4、配合状态码判断是否请求成功<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">assert</span> response.status_code == <span class="number">200</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="数据抓取"><a href="#数据抓取" class="headerlink" title="数据抓取"></a>数据抓取</h2><ul>
+<li>数据分类</li>
+</ul>
+<p>非结构化的数据：html等<br>处理方法：正则表达式、xpath<br>结构化数据：json，xml等<br>处理方法：转化为python数据类型</p>
 
       
     </div>
@@ -759,7 +775,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#爬虫原理和数据抓取"><span class="nav-number">1.</span> <span class="nav-text">爬虫原理和数据抓取</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#爬虫原理"><span class="nav-number">1.</span> <span class="nav-text">爬虫原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据抓取"><span class="nav-number">2.</span> <span class="nav-text">数据抓取</span></a></li></ol></div>
             
 
           </div>
