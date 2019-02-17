@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="爬虫原理 url的形式形式   scheme://host[:port#]/path/…/[?query-string][#anchor]scheme：协议(例如：http, https, ftp)host：服务器的IP地址或者域名port：服务器的端口（如果是走协议默认端口，80  or    443）path：访问资源的路径query-string：参数，发送给http服务器的数据anchor">
+  <meta name="description" content="爬虫原理 url的形式  形式   scheme://host[:port#]/path/…/[?query-string][#anchor]scheme：协议(例如：http, https, ftp)host：服务器的IP地址或者域名port：服务器的端口（如果是走协议默认端口，80  or    443）path：访问资源的路径query-string：参数，发送给http服务器的数据anch">
 <meta property="og:type" content="article">
 <meta property="og:title" content="爬虫原理和数据抓取笔记">
 <meta property="og:url" content="http://alpace.github.io/2019/02/08/Spider/index.html">
 <meta property="og:site_name" content="Alpace&#39;s Blog">
-<meta property="og:description" content="爬虫原理 url的形式形式   scheme://host[:port#]/path/…/[?query-string][#anchor]scheme：协议(例如：http, https, ftp)host：服务器的IP地址或者域名port：服务器的端口（如果是走协议默认端口，80  or    443）path：访问资源的路径query-string：参数，发送给http服务器的数据anchor">
+<meta property="og:description" content="爬虫原理 url的形式  形式   scheme://host[:port#]/path/…/[?query-string][#anchor]scheme：协议(例如：http, https, ftp)host：服务器的IP地址或者域名port：服务器的端口（如果是走协议默认端口，80  or    443）path：访问资源的路径query-string：参数，发送给http服务器的数据anch">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-16T02:22:46.753Z">
+<meta property="og:updated_time" content="2019-02-17T07:36:07.708Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="爬虫原理和数据抓取笔记">
-<meta name="twitter:description" content="爬虫原理 url的形式形式   scheme://host[:port#]/path/…/[?query-string][#anchor]scheme：协议(例如：http, https, ftp)host：服务器的IP地址或者域名port：服务器的端口（如果是走协议默认端口，80  or    443）path：访问资源的路径query-string：参数，发送给http服务器的数据anchor">
+<meta name="twitter:description" content="爬虫原理 url的形式  形式   scheme://host[:port#]/path/…/[?query-string][#anchor]scheme：协议(例如：http, https, ftp)host：服务器的IP地址或者域名port：服务器的端口（如果是走协议默认端口，80  or    443）path：访问资源的路径query-string：参数，发送给http服务器的数据anch">
 
 
 
@@ -454,7 +454,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-16 02:22:46" itemprop="dateModified" datetime="2019-02-16T02:22:46Z">2019-02-16</time>
+                <time title="修改时间：2019-02-17 07:36:07" itemprop="dateModified" datetime="2019-02-17T07:36:07Z">2019-02-17</time>
               
             
           </span>
@@ -506,35 +506,40 @@
 
       
         <h2 id="爬虫原理"><a href="#爬虫原理" class="headerlink" title="爬虫原理"></a>爬虫原理</h2><ul>
-<li><p>url的形式<br>形式   scheme://host[:port#]/path/…/[?query-string][#anchor]<br>scheme：协议(例如：http, https, ftp)<br>host：服务器的IP地址或者域名<br>port：服务器的端口（如果是走协议默认端口，80  or    443）<br>path：访问资源的路径<br>query-string：参数，发送给http服务器的数据<br>anchor：锚（跳转到网页的指定锚点位置）<br><a href="http://localhost:4000/file/part01/1.2.html" target="_blank" rel="noopener">http://localhost:4000/file/part01/1.2.html</a><br><a href="http://item.jd.com/11936238.html#product-detail" target="_blank" rel="noopener">http://item.jd.com/11936238.html#product-detail</a></p>
-</li>
-<li><p>发送简单的请求<br>需求：通过requests向百度首页发送请求，获取百度首页的数据<br>response = requests.get(url)<br>response的常用方法：<br>response.text<br>respones.content<br>response.status_code<br>response.request.headers<br>response.headers</p>
-</li>
-<li><p>response.text 和response.content的区别<br>response.text<br>类型：str<br>解码类型： 根据HTTP 头部对响应的编码作出有根据的推测，推测的文本编码<br>如何修改编码方式：response.encoding=”gbk”<br>response.content<br>类型：bytes<br>解码类型： 没有指定<br>如何修改编码方式：response.content.deocde(“utf8”)<br><strong>更推荐使用response.content.deocde()的方式获取响应的html页面</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 判断请求是否成功</span></span><br><span class="line"><span class="keyword">assert</span> response.status_code == <span class="number">200</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>发送POST请求<br>用法：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response = requests.post(<span class="string">"http://www.baidu.com/"</span>, data = data,headers=headers)</span><br></pre></td></tr></table></figure>
-</li>
+<li>url的形式</li>
 </ul>
-<p>data 的形式：字典</p>
+<p>形式   scheme://host[:port#]/path/…/[?query-string][#anchor]<br>scheme：协议(例如：http, https, ftp)<br>host：服务器的IP地址或者域名<br>port：服务器的端口（如果是走协议默认端口，80  or    443）<br>path：访问资源的路径<br>query-string：参数，发送给http服务器的数据<br>anchor：锚（跳转到网页的指定锚点位置）<br><a href="http://localhost:4000/file/part01/1.2.html" target="_blank" rel="noopener">http://localhost:4000/file/part01/1.2.html</a><br><a href="http://item.jd.com/11936238.html#product-detail" target="_blank" rel="noopener">http://item.jd.com/11936238.html#product-detail</a></p>
 <ul>
-<li>使用代理<br>用法：<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">requests.get(<span class="string">"http://www.baidu.com"</span>, proxies = proxies)</span><br></pre></td></tr></table></figure>
-</li>
+<li>发送简单的请求</li>
 </ul>
-<p>proxies的形式：字典<br>proxies = {<br>    “http”: “<a href="http://12.34.56.79:9527&quot;" target="_blank" rel="noopener">http://12.34.56.79:9527&quot;</a>,<br>    “https”: “<a href="https://12.34.56.79:9527&quot;" target="_blank" rel="noopener">https://12.34.56.79:9527&quot;</a>,<br>    }</p>
+<p>需求：通过requests向百度首页发送请求，获取百度首页的数据<br>response = requests.get(url)<br>response的常用方法：<br>response.text<br>respones.content<br>response.status_code<br>response.request.headers<br>response.headers</p>
 <ul>
-<li><p>cookie和session区别<br>cookie数据存放在客户的浏览器上，session数据放在服务器上。<br>cookie不是很安全，别人可以分析存放在本地的cookie并进行cookie欺骗。<br>session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能。<br>单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。</p>
-</li>
-<li><p>处理cookies 、session请求<br>requests 提供了一个叫做session类，来实现客户端和服务端的会话保持<br>使用方法：<br>实例化一个session对象<br>让session发送get或者post请求</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">session = requests.session()</span><br><span class="line">response = session.get(url,headers)</span><br></pre></td></tr></table></figure>
-</li>
+<li>response.text 和response.content的区别</li>
 </ul>
+<p>response.text<br>类型：str<br>解码类型： 根据HTTP 头部对响应的编码作出有根据的推测，推测的文本编码<br>如何修改编码方式：response.encoding=”gbk”<br>response.content<br>类型：bytes<br>解码类型： 没有指定<br>如何修改编码方式：response.content.deocde(“utf8”)<br><strong>更推荐使用response.content.deocde()的方式获取响应的html页面</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 判断请求是否成功</span></span><br><span class="line"><span class="keyword">assert</span> response.status_code == <span class="number">200</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>发送POST请求</li>
+</ul>
+<p>用法：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response = requests.post(<span class="string">"http://www.baidu.com/"</span>, data = data,headers=headers)</span><br></pre></td></tr></table></figure></p>
+<p><strong>data 的形式：字典</strong></p>
+<ul>
+<li>使用代理</li>
+</ul>
+<p>用法：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">requests.get(<span class="string">"http://www.baidu.com"</span>, proxies = proxies)</span><br></pre></td></tr></table></figure></p>
+<p>proxies的形式：字典<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">proxies = &#123;</span><br><span class="line">	<span class="string">"http"</span>: <span class="string">"http://12.34.56.79:9527"</span>,</span><br><span class="line">	<span class="string">"https"</span>: <span class="string">"https://12.34.56.79:9527"</span>,</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>cookie和session区别</li>
+</ul>
+<p>cookie数据存放在客户的浏览器上，session数据放在服务器上。<br>cookie不是很安全，别人可以分析存放在本地的cookie并进行cookie欺骗。<br>session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能。<br>单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。</p>
+<ul>
+<li>处理cookies 、session请求</li>
+</ul>
+<p>requests 提供了一个叫做session类，来实现客户端和服务端的会话保持<br>使用方法：<br>实例化一个session对象<br>让session发送get或者post请求<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">session = requests.session()</span><br><span class="line">response = session.get(url,headers)</span><br></pre></td></tr></table></figure></p>
 <p>cookies字典推导式 列表推导式<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cookies = <span class="string">"..."</span></span><br><span class="line">cookies = &#123;i.split(<span class="string">"="</span>)[<span class="number">0</span>]:i.split(<span class="string">"="</span>)[<span class="number">1</span>] <span class="keyword">for</span> i <span class="keyword">in</span> range(cookies.split(<span class="string">", "</span>))&#125;</span><br></pre></td></tr></table></figure></p>
 <ul>
-<li>Requests小技巧<br>1.把cookie对象转化为字典<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">reqeusts.util.dict_from_cookiejar  <span class="comment">#</span></span><br><span class="line">requests.get(url,cookies=&#123;&#125;)</span><br></pre></td></tr></table></figure>
-</li>
+<li>Requests小技巧</li>
 </ul>
+<p>1.把cookie对象转化为字典<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">reqeusts.util.dict_from_cookiejar  <span class="comment">#</span></span><br><span class="line">requests.get(url,cookies=&#123;&#125;)</span><br></pre></td></tr></table></figure></p>
 <p>2、请求 SSL证书验证<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response = requests.get(<span class="string">"https://www.12306.cn/mormhweb/ "</span>, verify=<span class="keyword">False</span>)</span><br></pre></td></tr></table></figure></p>
 <p>3、设置超时<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response = requests.get(url,<span class="number">3</span>)</span><br></pre></td></tr></table></figure></p>
 <p>4、配合状态码判断是否请求成功<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">assert</span> response.status_code == <span class="number">200</span></span><br></pre></td></tr></table></figure></p>
@@ -542,6 +547,18 @@
 <li>数据分类</li>
 </ul>
 <p>非结构化的数据：html等<br>处理方法：正则表达式、xpath<br>结构化数据：json，xml等<br>处理方法：转化为python数据类型</p>
+<ul>
+<li>json数据</li>
+</ul>
+<p>由于把json数据转化为python内建数据类型很简单，所以爬虫中，如果我们能够找到返回json数据的URL，就会尽量使用这种URL。<br>JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式，它使得人们很容易的进行阅读和编写。同时也方便了机器进行解析和生成。适用于进行数据交互的场景，比如网站前台与后台之间的数据交互。<br>json字符串–&gt;python数据类型<code>json.loads()</code><br>python数据类型–&gt;json字符串<code>json.dumps()</code><br>包含json的类文件对象–&gt;python数据类型<code>json.load()</code><br>python数据类型–&gt;包含json的类文件对象<code>json.dump()</code></p>
+<ul>
+<li>正则表达式</li>
+</ul>
+<p>正则表达式的定义:<br>就是用事先定义好的一些特定字符、及这些特定字符的组合，组成一个”规则字符串”，这个”规则字符串”用来表达对字符串的一种过滤逻辑。<br>常用正则表达式的方法：<br>re.compile（编译）<br>pattern.match（从头找一个）<br>pattern.search（找一个）<br>pattern.findall（找所有）<br>pattern.sub（替换）</p>
+<ul>
+<li>原始字符串</li>
+</ul>
+<p>原始字符串定义(raw string)：所有的字符串都是直接按照字面的意思来使用，没有转义特殊或不能打印的字符，原始字符串往往针对特殊字符而言。<br><strong>‘\n’长度为1，r’\n’长度为2</strong></p>
 
       
     </div>
